@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title></title>	
+    <meta charset="UTF-8">
+	<script>
+		function moveAnything(aThing){
+			//Get the x position
+			var x= parseInt(this.style.left); //parses or reads an integer, takes number out of string
+			
+			// if x is nan, make it 0
+			if(isNan(x)) {x=0;}
+			
+			// Schedule a function to move x by 10px every 100 milliseconds
+			setInterval(
+				function(){
+					x = x + 10;
+					if(x > screen.width){x=0;}
+					this.style.left = x + "px";		
+					}
+				, 25
+			 );
+		}
+	</script>
+	
+</head>
+<body>
+	<h3>Slide a Div</h3>
+	<div id="it" 
+		style="position:absolute; background: blue; height: 100px; width:100px; left:150px; top:150px;"
+		onclick="moveAnything('it')">I AM IT</div>
+	<div id="that" 
+		style="position:absolute; background: red; height: 100px; width:100px"
+		onclick="moveAnything('thing1')" 
+		onmouseover="this.style.left=parseInt(this.style.left) + 100 + 'px'">I AM THAT</div>
+</body>
+</html>
+
+	

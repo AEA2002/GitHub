@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animate a div</title>
+        <script>
+            function moveAnything2(aThing){
+				var it=document.getElementById(aThing);
+
+                // Get the X position of "it".
+                var x = parseInt(it.style.left);
+
+                // if X position is not a number, make it 0
+                if(isNaN(x)){ x = 0; }
+
+                // function to move x by 10px every 100 milliseconds
+                setInterval(
+                    function(){
+                       if( x < screen.width ) {
+							x = x + 10;
+							it.style.left = x + "px";
+						} 
+					}
+                    , 25 );
+            }
+			function makeNumber(input,dflt){
+				var tmp = parseInt(input)
+				
+				if(isNaN(tmp)){ 
+					return dflt;
+				} else{
+					return tmp;
+				}
+			}
+			
+	function runAway(aThing){
+		var increment = 100;
+		var thingLeft = makeNumber(aThing.style.left,0);
+		var thingWidth = makeNumber(aThing.style.width, 0);
+		var thingRight = thingLeft + thingWidth;
+		var screenLeft = 0;
+		var screenRight = screen.width;
+		var target = 0;
+		
+		
+		if ( ((thingRight + increment) > screenRight) 
+				|| ((thingLeft + increment) < screenLeft)){
+				increment = (increment * -1);
+			} 
+		
+		aThing.style.left = target + "px";
+	}
+			
+        </script>
+    </head>
+    <body>
+    <strong>Slide a div</strong><hr />
+    <div id="thing1" style="position:absolute; background: purple; height: 100px; width: 100px;" onclick="moveAnything2('thing1')"	 
+		onmouseover="runAway(this);">I AM IT</div>
+	<div id="thing2" 
+		style="position:absolute; background: red; height: 100px; width:100px;  top:150px;"
+		onclick="moveAnything2('thing2')" 
+		onmouseover="runAway(this);">I AM THAT</div>
+    </body>
+</html>
