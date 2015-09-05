@@ -7,7 +7,7 @@ var location3 = 6;
 var isSunk=false;
 
 while(isSunk == false) {
-	guess = prompt ("What is you wish? \n Enter a number 0-6");
+	guess = prompt ("What is your wish? \n Enter a number: 0-6");
 	guesses = guesses + 1;
 	if (guess==location1 || guess==location2 || guess==location3) {
 		alert("It's a hit!");
@@ -18,6 +18,6 @@ while(isSunk == false) {
 		}
 	}
 	else {
-		alert("Its a miss!");
+		alert("It's a miss!");
 	}
 }
